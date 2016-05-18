@@ -64,6 +64,7 @@
             antialias: true
         });
         renderer.shadowMap.enabled = true;
+        renderer.setSize(WIDTH, HEIGHT);
         
         container = document.getElementById('world');
         container.appendChild(renderer.domElement);
