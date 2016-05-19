@@ -81,6 +81,17 @@
         cockpit.castShadow = true;
         cockpit.receiveShadow = true;
         this.mesh.add(cockpit);
+
+        var geomEngine = new THREE.BoxGeometry(20, 50, 50, 1, 1, 1);
+        var matEngine = new THREE.MeshPhongMaterial({
+            color: Colors.white,
+            shading: THREE.FlatShading
+        });
+        var engine = new THREE.Mesh(geomEngine, matEngine);
+        engine.position.x = 40;
+        engine.castShadow = true;
+        engine.receiveShadow = true;
+        this.mesh.add(engine);
     };
 
     function doWindowResize() {
