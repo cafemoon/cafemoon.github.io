@@ -69,6 +69,19 @@
             this.mesh.add(c.mesh);
         }
     };
+    
+    var AirPlane = function() {
+        this.mesh = new THREE.Object3D();
+        var geomCockpit = new THREE.BoxGeometry(60, 50, 50, 1, 1, 1);
+        var matCockpit = new THREE.MeshPhongMaterial({
+            color: Colors.red,
+            shading: THREE.FlatShading
+        });
+        var cockpit = new THREE.Mesh(geomCockpit, matCockpit);
+        cockpit.castShadow = true;
+        cockpit.receiveShadow = true;
+        this.mesh.add(cockpit);
+    };
 
     function doWindowResize() {
         HEIGHT = window.innerHeight;
@@ -143,6 +156,13 @@
         scene.add(sky.mesh);
     }
     
+    function createPlane() {
+        airplane = new AirPlane();
+        airplane.mesh.scale.set(0.25, 0.25, 0.25);
+        airplane.mesh.position.y = 100;
+        scene.add(airplane.mesh);
+    }
+    
     function loop() {
         sea.mesh.rotation.z += 0.005;
         sky.mesh.rotation.z += 0.01;
@@ -153,6 +173,7 @@
     function init() {
         createScene();
         createLights();
+        createPlane();
         createSea();
         createSky();
         loop();
